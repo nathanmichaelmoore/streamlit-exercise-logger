@@ -115,6 +115,9 @@ def load_workouts():
 
 # Load existing workouts
 workouts = load_workouts()
+if not workouts:
+    save_workouts([{"name": "", "exercises": []}])
+
 
 # Function to read the current workout number from the CSV
 def read_current_workout_num():
@@ -160,9 +163,9 @@ initialize_session_state()
 
 
 # Function to log data to CSV
-def log_to_csv(date_time, workout_num, workout_name, exercise_name, weight, set_num, rep):
-    log_entry = pd.DataFrame([[date_time, workout_num, workout_name, exercise_name, weight, set_num, rep]], 
-                             columns=['DateTime', 'WorkoutNum', 'WorkoutName', 'ExerciseName', 'Weight', 'SetNum', 'Rep'])
+def log_to_csv(date_time, workout_num, workout_name, exercise_name, weight, set_num, rep, set_type):
+    log_entry = pd.DataFrame([[date_time, workout_num, workout_name, exercise_name, weight, set_num, rep, set_type]], 
+                             columns=['DateTime', 'WorkoutNum', 'WorkoutName', 'ExerciseName', 'Weight', 'SetNum', 'Rep', 'SetType'])
     if not os.path.isfile(CSV_FILE):
         log_entry.to_csv(CSV_FILE, index=False)
     else:
@@ -201,12 +204,12 @@ st_autorefresh(interval=60000, key="datarefresh")
 
 # Sidebar for navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Create Workout", "Workout", "History"])
-
-
-
+if 'page' not in st.session_state:
+    st.session_state['page'] = "Workout"
+page = st.sidebar.radio("Go to", ["Create Workout", "Workout", "History"], index=["Create Workout", "Workout", "History"].index(st.session_state['page']))
 
 if page == "Create Workout":
+    st.session_state['page'] = "Create Workout"
     st.title("Create a New Workout")
 
     # Input for workout name
@@ -278,7 +281,6 @@ if page == "Create Workout":
         if st.button(f"Copy {workout['name']}", key=f"copy_{i}"):
             st.session_state['new_workout_name'] = f"Copy of {workout['name']}"
             st.session_state['new_workout_exercises'] = workout['exercises']
-            st.rerun()
         if st.button(f"Delete {workout['name']}", key=f"delete_{i}"):
             workouts.pop(i)
             save_workouts(workouts)
@@ -286,36 +288,51 @@ if page == "Create Workout":
             st.rerun()
 
 if page == "Workout":
+    st.session_state['page'] = "Workout"
     # Display the current date and time at the top of the app
     current_time = datetime.now().strftime("%A - %b %d, %I:%M %p")
     st.title(f"{current_time}")
 
+    # Define the update_weight function
+    def update_weight():
+        st.session_state['weight'] = st.session_state['weight_input']
+
     # Display the current workout number
     st.title(f"Workout Number: {st.session_state['workout_num']}")
 
-    # Add "New Workout" button above workout selection
-    if st.button("New Workout"):
-        new_workout()
-
-    # Select a workout
-    workout_names = [workout['name'] for workout in workouts]
-    selected_workout_name = st.selectbox("Select a workout", workout_names, index=workout_names.index(st.session_state['selected_workout_name']))
-    st.session_state['selected_workout_name'] = selected_workout_name
+    # Add "New Workout" button and "Select Workout" dropdown in the same row, centered vertically
+    col1, col2 = st.columns([1, 3])
+    with col1:
+        st.write(" ")  # Add an empty line for vertical centering
+        if st.button("New Workout"):
+            new_workout()
+    with col2:
+        workout_names = [workout['name'] for workout in workouts]
+        selected_workout_name = st.selectbox("Select a workout", workout_names, index=workout_names.index(st.session_state['selected_workout_name']))
+        if selected_workout_name != st.session_state['selected_workout_name']:
+            st.session_state['selected_workout_name'] = selected_workout_name
+            st.session_state['current_exercise_index'] = 0  # Reset current exercise index
+            st.session_state['superset_index'] = 0  # Reset superset index
+            st.session_state['set_num'] = [0, 0]  # Reset set numbers for superset exercises
 
     # Find the selected workout
     selected_workout = next(workout for workout in workouts if workout['name'] == selected_workout_name)
     st.session_state['selected_workout'] = selected_workout
 
     # Display exercises of the selected workout in a more compact format
-    st.write("Exercises:")
+    #st.write("Exercises:")
     exercise_details = selected_workout['exercises']
+
+    # Ensure current_exercise_index is within the valid range
+    if st.session_state['current_exercise_index'] >= len(exercise_details):
+        st.session_state['current_exercise_index'] = 0
 
     # Create a table with two columns
     table_html = "<table style='width:100%'>"
     for i, exercise_detail in enumerate(exercise_details):
         if exercise_detail['set_type'] == 'superset':
             table_html += "<tr>"
-            for j, exercise_name in enumerate([exercise_detail['exercise'], exercise_detail['superset_exercise'] ]):
+            for j, exercise_name in enumerate([exercise_detail['exercise'], exercise_detail['superset_exercise']]):
                 if i == st.session_state['current_exercise_index'] and j == st.session_state['superset_index']:
                     table_html += f"<td style='color: lightblue;'>{exercise_name} - {exercise_detail['set_type']}</td>"
                 else:
@@ -331,22 +348,32 @@ if page == "Workout":
     table_html += "</table>"
     st.markdown(table_html, unsafe_allow_html=True)
 
-    # Add "Next Exercise" button
-    if st.button("Next Exercise"):
-        if st.session_state['current_exercise_index'] < len(exercise_details) - 1:
-            st.session_state['current_exercise_index'] += 1
-            st.session_state['set_num'] = 0  # Reset set_num
-        else:
-            st.write("All exercises completed!")
-        st.rerun()
-
-    # Add a number input for weight in a compact format
-    def update_weight():
-        st.session_state['weight'] = st.session_state['weight_input']
-
-    weight_col = st.columns([1, 3])
-    with weight_col[0]:
-        st.number_input('Weight', value=st.session_state['weight'], step=5, key='weight_input', on_change=update_weight)
+    # Add "Next Exercise" button and weight number input in the same row, centered vertically
+    col1, col2 = st.columns([1, 3])
+    with col1:
+        st.write(" ")  # Add an empty line for vertical centering
+        st.write(" ")  # Add an empty line for vertical centering
+        if st.button("Next Exercise"):
+            current_exercise = exercise_details[st.session_state['current_exercise_index']]
+            if current_exercise['set_type'] == 'superset':
+                if st.session_state['superset_index'] == 0:
+                    st.session_state['superset_index'] = 1
+                else:
+                    st.session_state['superset_index'] = 0
+                    if st.session_state['current_exercise_index'] < len(exercise_details) - 1:
+                        st.session_state['current_exercise_index'] += 1
+                    else:
+                        st.write("All exercises completed!")
+            else:
+                if st.session_state['current_exercise_index'] < len(exercise_details) - 1:
+                    st.session_state['current_exercise_index'] += 1
+                else:
+                    st.write("All exercises completed!")
+            st.session_state['set_num'] = [0, 0]  # Reset set numbers for superset exercises
+            st.rerun()
+    with col2:
+        st.write("")  # Add an empty line for vertical centering
+        st.number_input('Weight', value=st.session_state.get('weight', 0), step=5, key='weight_input', on_change=update_weight)
 
     # Create 3 rows of 10 columns each for rep buttons
     st.write("Click the buttons to log your reps")
@@ -357,29 +384,33 @@ if page == "Workout":
             button_number = r * col + i + 1
             if buttons.button(f"{button_number}", use_container_width=True):
                 st.session_state['rep'] = button_number
-                st.session_state['set_num'] += 1  # Increment set_num
-                # Log the current date, time, set_num, rep, workout_num, weight, and exercise_name to CSV
-                current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")  # ISO 8601 format with seconds
                 current_exercise = exercise_details[st.session_state['current_exercise_index']]
                 workout_name = st.session_state['selected_workout']['name']
                 if current_exercise['set_type'] == 'superset':
                     exercise_name = current_exercise['exercise'] if st.session_state['superset_index'] == 0 else current_exercise['superset_exercise']
-                    st.session_state['superset_index'] = (st.session_state['superset_index'] + 1) % 2
+                    st.session_state['set_num'][st.session_state['superset_index']] += 1  # Increment set number for the current superset exercise
+                    set_num = st.session_state['set_num'][st.session_state['superset_index']]
+                    st.session_state['superset_index'] = (st.session_state['superset_index'] + 1) % 2  # Switch to the next superset exercise
                 else:
                     exercise_name = current_exercise['exercise']
-                log_to_csv(current_time, st.session_state['workout_num'], workout_name, exercise_name, st.session_state['weight'], st.session_state['set_num'], st.session_state['rep'])
-                st.session_state['set_rep_list'].append({'Set': st.session_state['set_num'], 'Rep': st.session_state['rep']})
-                st.session_state['log_entries'].append({'Exercise': exercise_name, 'Set': st.session_state['set_num'], 'Rep': st.session_state['rep']})
+                    st.session_state['set_num'] = [st.session_state['set_num'][0] + 1, 0]  # Increment set number for non-superset exercise
+                    set_num = st.session_state['set_num'][0]
+                current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")  # ISO 8601 format with seconds
+                log_to_csv(current_time, st.session_state['workout_num'], workout_name, exercise_name, st.session_state['weight'], set_num, st.session_state['rep'], current_exercise['set_type'])
+                st.session_state['set_rep_list'].append({'Set': set_num, 'Rep': st.session_state['rep']})
+                st.session_state['log_entries'].append({'Exercise': exercise_name, 'Set': set_num, 'Rep': st.session_state['rep']})
                 st.rerun()
 
     # Add an "Undo" button
     if st.button("Undo"):
-        if st.session_state['set_num'] > 1:
-            st.session_state['set_num'] -= 1  # Decrement set_num
-            st.session_state['rep'] = None  # Reset rep
-            undo_last_entry()  # Remove the last entry from the CSV
-            if st.session_state['log_entries']:
-                st.session_state['log_entries'].pop()  # Remove the last entry from the log
+        if st.session_state['set_num'][0] > 1 or st.session_state['set_num'][1] > 1:
+            if st.session_state['superset_index'] == 0:
+                st.session_state['set_num'][0] -= 1
+            else:
+                st.session_state['set_num'][1] -= 1
+            st.session_state['set_rep_list'].pop()
+            st.session_state['log_entries'].pop()
+            st.rerun()
 
     # Display the log table
     st.write("Workout Log:")
@@ -387,6 +418,7 @@ if page == "Workout":
     st.table(log_df)
 
 elif page == "History":
+    st.session_state['page'] = "History"
     st.title("Workout History")
 
     if os.path.isfile(CSV_FILE):
