@@ -64,3 +64,14 @@ DateTime,WorkoutNum,WorkoutName,ExerciseName,Weight,SetNum,Rep,SetType
 2024-12-10T08:26:16,2,Rp Day 1,Dumbbell Curls,20,2,3,superset
 2024-12-10T08:26:16,2,Rp Day 1,Crunches,20,2,4,superset
 2024-12-10T08:26:17,2,Rp Day 1,Dumbbell Curls,20,3,3,superset
+2024-12-14T11:17:08,3,Rp Day 1,Dumbbell Curls,45,1,4,superset
+2024-12-14T11:17:38,4,Rp Day 1,Lateral Raises,10,1,5,myo
+2024-12-14T11:19:16,4,Rp Day 1,Push-Ups,20,1,5,myo
+2024-12-14T11:19:20,4,Rp Day 1,Push-Ups,20,2,17,myo
+2024-12-14T11:24:06,4,Rp Day 1,Crunches,55,1,10,superset
+2024-12-14T11:29:54,4,Rp Day 1,Push-Ups,20,1,4,myo
+2024-12-14T11:29:58,4,Rp Day 1,Lateral Raises,20,1,6,myo
+2024-12-14T11:30:07,4,Rp Day 1,Dumbbell Curls,40,1,6,superset
+2024-12-14T11:30:13,4,Rp Day 1,Dumbbell Bench Press,40,1,20,superset
+2024-12-14T11:30:18,4,Rp Day 1,Chest Dips,60,1,17,superset
+2024-12-14T11:42:59,4,Rp Day 1,Push-Ups,5,1,20,myo

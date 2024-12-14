@@ -293,6 +293,16 @@ if page == "Workout":
     current_time = datetime.now().strftime("%A - %b %d, %I:%M %p")
     st.title(f"{current_time}")
 
+    # Function to get the last logged weight for an exercise
+    def get_last_logged_weight(exercise_name):
+        if os.path.isfile(CSV_FILE):
+            df = pd.read_csv(CSV_FILE)
+            if not df.empty:
+                exercise_df = df[df['ExerciseName'] == exercise_name]
+                if not exercise_df.empty:
+                    return exercise_df.iloc[-1]['Weight']
+        return st.session_state['weight']  # Default weight if no previous log
+
     # Define the update_weight function
     def update_weight():
         st.session_state['weight'] = st.session_state['weight_input']
@@ -326,6 +336,10 @@ if page == "Workout":
     # Ensure current_exercise_index is within the valid range
     if st.session_state['current_exercise_index'] >= len(exercise_details):
         st.session_state['current_exercise_index'] = 0
+
+    # Initialize set_num if it doesn't exist
+    if 'set_num' not in st.session_state:
+        st.session_state['set_num'] = [0, 0]
 
     # Create a table with two columns
     table_html = "<table style='width:100%'>"
@@ -372,8 +386,10 @@ if page == "Workout":
             st.session_state['set_num'] = [0, 0]  # Reset set numbers for superset exercises
             st.rerun()
     with col2:
-        st.write("")  # Add an empty line for vertical centering
-        st.number_input('Weight', value=st.session_state.get('weight', 0), step=5, key='weight_input', on_change=update_weight)
+        if st.session_state['selected_workout']['name'] != "":
+            current_exercise_name = exercise_details[st.session_state['current_exercise_index']]['exercise']
+            initial_weight = get_last_logged_weight(current_exercise_name)
+            st.number_input('Weight', value=initial_weight, step=5, key='weight_input', on_change=update_weight)
 
     # Create 3 rows of 10 columns each for rep buttons
     st.write("Click the buttons to log your reps")
@@ -398,7 +414,7 @@ if page == "Workout":
                 current_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")  # ISO 8601 format with seconds
                 log_to_csv(current_time, st.session_state['workout_num'], workout_name, exercise_name, st.session_state['weight'], set_num, st.session_state['rep'], current_exercise['set_type'])
                 st.session_state['set_rep_list'].append({'Set': set_num, 'Rep': st.session_state['rep']})
-                st.session_state['log_entries'].append({'Exercise': exercise_name, 'Set': set_num, 'Rep': st.session_state['rep']})
+                st.session_state['log_entries'].append({'Exercise': exercise_name, 'Set': set_num, 'Rep': st.session_state['rep'], 'Weight':st.session_state['weight_input']})
                 st.rerun()
 
     # Add an "Undo" button
