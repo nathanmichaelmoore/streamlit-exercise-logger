@@ -75,3 +75,38 @@ DateTime,WorkoutNum,WorkoutName,ExerciseName,Weight,SetNum,Rep,SetType
 2024-12-14T11:30:13,4,Rp Day 1,Dumbbell Bench Press,40,1,20,superset
 2024-12-14T11:30:18,4,Rp Day 1,Chest Dips,60,1,17,superset
 2024-12-14T11:42:59,4,Rp Day 1,Push-Ups,5,1,20,myo
+2024-12-14T12:30:43,5,Rp Day 1,Push-Ups,20,1,14,myo
+2024-12-14T12:30:47,5,Rp Day 1,Push-Ups,30,2,14,myo
+2024-12-14T12:30:47,5,Rp Day 1,Push-Ups,30,3,15,myo
+2024-12-14T12:30:47,5,Rp Day 1,Push-Ups,30,4,16,myo
+2024-12-14T12:30:49,5,Rp Day 1,Lateral Raises,30,1,2,myo
+2024-12-14T12:30:51,5,Rp Day 1,Dumbbell Curls,30,1,13,superset
+2024-12-14T12:30:51,5,Rp Day 1,Crunches,30,1,14,superset
+2024-12-14T12:31:09,6,Rp Day 1,Lateral Raises,30,1,15,myo
+2024-12-14T12:33:53,6,Rp Day 1,Push-Ups,20,1,1,myo
+2024-12-14T12:33:54,6,Rp Day 1,Push-Ups,20,2,2,myo
+2024-12-14T12:33:56,6,Rp Day 1,Push-Ups,20,3,13,myo
+2024-12-14T12:33:57,6,Rp Day 1,Push-Ups,20,4,14,myo
+2024-12-14T12:33:58,6,Rp Day 1,Lateral Raises,20,1,1,myo
+2024-12-14T12:33:59,6,Rp Day 1,Lateral Raises,20,2,2,myo
+2024-12-14T12:34:00,6,Rp Day 1,Lateral Raises,20,3,3,myo
+2024-12-14T12:34:01,6,Rp Day 1,Lateral Raises,20,4,14,myo
+2024-12-14T12:34:02,6,Rp Day 1,Dumbbell Curls,20,1,14,superset
+2024-12-14T12:34:04,6,Rp Day 1,Crunches,20,1,16,superset
+2024-12-14T12:34:05,6,Rp Day 1,Dumbbell Curls,20,2,16,superset
+2024-12-14T12:34:07,6,Rp Day 1,Dumbbell Bench Press,20,1,13,superset
+2024-12-14T12:34:07,6,Rp Day 1,Chest Dips,20,1,14,superset
+2024-12-14T12:34:07,6,Rp Day 1,Dumbbell Bench Press,20,2,14,superset
+2024-12-14T12:34:07,6,Rp Day 1,Chest Dips,20,2,14,superset
+2024-12-14T12:34:08,6,Rp Day 1,Dumbbell Bench Press,20,3,4,superset
+2024-12-14T12:42:33,6,Rp Day 1,Push-Ups,20,1,4,myo
+2024-12-14T12:42:35,6,Rp Day 1,Lateral Raises,20,1,4,myo
+2024-12-14T12:42:36,6,Rp Day 1,Lateral Raises,20,2,5,myo
+2024-12-14T12:45:21,6,Rp Day 1,Push-Ups,20,1,3,myo
+2024-12-14T12:45:24,7,Rp Day 1,Push-Ups,20,1,1,myo
+2024-12-14T12:45:26,7,Rp Day 1,Push-Ups,20,2,15,myo
+2024-12-14T12:45:29,8,Rp Day 1,Push-Ups,20,1,5,myo
+2024-12-15T16:35:28,8,Rp Day 1,Push-Ups,20,1,2,myo
+2024-12-15T16:35:28,8,Rp Day 1,Push-Ups,20,2,3,myo
+2024-12-15T16:35:30,9,Rp Day 1,Push-Ups,20,1,1,myo
+2024-12-15T16:35:31,9,Rp Day 1,Push-Ups,20,2,2,myo

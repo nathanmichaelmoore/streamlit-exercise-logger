@@ -181,7 +181,7 @@ def undo_last_entry():
 
 # Function to clear the state of the app
 def clear_state():
-    st.session_state['set_num'] = 0
+    st.session_state['set_num'] = [0,0]
     st.session_state['rep'] = None
     st.session_state['set_rep_list'] = []
     st.session_state['current_exercise_index'] = 0
@@ -440,26 +440,18 @@ elif page == "History":
     if os.path.isfile(CSV_FILE):
         df = pd.read_csv(CSV_FILE)
         if not df.empty:
-            # Get the last workout number
-            last_workout_num = df['WorkoutNum'].max()
-            # Filter the dataframe for the last workout
-            last_workout_df = df[df['WorkoutNum'] == last_workout_num]
-            # Group by ExerciseName and sum the reps for each exercise
-            total_reps = last_workout_df.groupby(['WorkoutName', 'ExerciseName', 'Weight']).agg({'SetNum': 'max', 'Rep': 'sum'}).reset_index()
-            total_reps.columns = ['WorkoutName', 'ExerciseName', 'Weight', 'TotalSets', 'TotalReps']
-            st.write("Total Reps from Last Workout for Each Exercise:")
-            st.table(total_reps)
-
             # Calculate total volume for each exercise
             df['Volume'] = df['SetNum'] * df['Rep'] * df['Weight']
             exercise_names = df['ExerciseName'].unique()
 
             for exercise in exercise_names:
+                #st.write(exercise_names)
                 exercise_df = df[df['ExerciseName'] == exercise]
                 volume_by_workout = exercise_df.groupby('WorkoutNum')['Volume'].sum().reset_index()
 
-                # Filter to include only the last 5 times the exercise was performed
-                volume_by_workout = volume_by_workout.nlargest(5, 'WorkoutNum').sort_values('WorkoutNum')
+                # Filter to include only the last 5 times the exercise was performed based on DateTime
+                exercise_df = exercise_df.sort_values('DateTime', ascending=False).head(5).sort_values('DateTime')
+                volume_by_workout = exercise_df.groupby('WorkoutNum')['Volume'].sum().reset_index()
 
                 # Plot the volume over workouts
                 fig, ax = plt.subplots()
