@@ -198,8 +198,14 @@ if page == "Create Workout":
 
     # Handle superset case
     if set_type == "superset":
-        superset_exercise = st.selectbox("Select Superset Exercise", [ex['name'] for ex in exercises[muscle_group]])
+        superset_muscle_group = st.selectbox("Select Muscle Group for Superset", list(exercises.keys()), key="superset_muscle_group")
+        superset_exercise_list = exercises[superset_muscle_group]
 
+        if superset_exercise_list:
+            superset_exercise = st.selectbox("Select Superset Exercise", [ex['name'] for ex in superset_exercise_list], key="superset_exercise")
+        else:
+            st.write("No exercises available for this muscle group. Add some in 'Create Exercise' page.")
+            
     # Button to add exercise to the workout
     if st.button("Add Exercise"):
         if set_type == "superset":
@@ -276,6 +282,7 @@ if page == "Workout":
                 if not exercise_df.empty:
                     return exercise_df.iloc[-1]['Weight']
         return st.session_state['weight']  # Default weight if no previous log
+    
 
     # Define the update_weight function
     def update_weight():
@@ -352,6 +359,7 @@ if page == "Workout":
                         st.session_state['current_exercise_index'] += 1
                     else:
                         st.write("All exercises completed!")
+                st.rerun()
             else:
                 if st.session_state['current_exercise_index'] < len(exercise_details) - 1:
                     st.session_state['current_exercise_index'] += 1
@@ -359,9 +367,17 @@ if page == "Workout":
                     st.write("All exercises completed!")
             st.session_state['set_num'] = [0, 0]  # Reset set numbers for superset exercises
             st.rerun()
+            
     with col2:
         if st.session_state['selected_workout']['name'] != "":
-            current_exercise_name = exercise_details[st.session_state['current_exercise_index']]['exercise']
+            current_exercise = exercise_details[st.session_state['current_exercise_index']]
+            if current_exercise['set_type'] == 'superset' and st.session_state['superset_index'] == 1:
+                current_exercise_name = exercise_details[st.session_state['current_exercise_index']]['superset_exercise']
+                #st.write(current_exercise_name)
+            else:
+                current_exercise_name = exercise_details[st.session_state['current_exercise_index']]['exercise']
+                #st.write(current_exercise_name)
+           
             initial_weight = get_last_logged_weight(current_exercise_name)
             st.number_input('Weight', value=initial_weight, step=5, key='weight_input', on_change=update_weight)
 

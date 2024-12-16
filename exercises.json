@@ -39,6 +39,18 @@
         {
             "name": "Incline Push-Ups",
             "explanation": "A variation of push-ups that targets the upper chest."
+        },
+        {
+            "name": "Cable Fly",
+            "explanation": "Isolates the chest by pulling cables together in a hugging motion."
+        },
+        {
+            "name": "Incline Cable Fly",
+            "explanation": "Focuses on the upper chest with an incline angle for the cable fly motion."
+        },
+        {
+            "name": "Decline Cable Press",
+            "explanation": "Targets the lower chest using a decline angle press with cables."
         }
     ],
     "Back": [
@@ -81,6 +93,10 @@
         {
             "name": "Face Pulls",
             "explanation": "Targets the rear delts and upper back using a cable machine."
+        },
+        {
+            "name": "Straight Arm Pulldown",
+            "explanation": "Focuses on the lats and shoulders by pulling the cable straight down with extended arms."
         }
     ],
     "Shoulders": [
@@ -123,6 +139,14 @@
         {
             "name": "Cable Face Pulls",
             "explanation": "Targets the rear delts and upper back using a cable machine."
+        },
+        {
+            "name": "Cable Rear Delt Fly",
+            "explanation": "Strengthens the rear deltoid with a reverse fly motion using the cable."
+        },
+        {
+            "name": "Cable Front Raise",
+            "explanation": "Isolates the front deltoid by lifting the cable straight in front of you."
         }
     ],
     "Biceps": [
@@ -187,26 +211,6 @@
         {
             "name": "Overhead Cable Extensions",
             "explanation": "Targets the triceps using a cable machine."
-        },
-        {
-            "name": "Skull Crushers",
-            "explanation": "An isolation exercise for the triceps performed with a barbell or dumbbells."
-        },
-        {
-            "name": "Kickbacks",
-            "explanation": "An isolation exercise for the triceps using dumbbells."
-        },
-        {
-            "name": "Bench Dips",
-            "explanation": "A bodyweight exercise targeting the triceps and chest."
-        },
-        {
-            "name": "Dumbbell Kickbacks",
-            "explanation": "An isolation exercise for the triceps using dumbbells."
-        },
-        {
-            "name": "Cable Overhead Tricep Extensions",
-            "explanation": "Targets the triceps using a cable machine."
         }
     ],
     "Legs": [
@@ -249,6 +253,10 @@
         {
             "name": "Goblet Squats",
             "explanation": "A variation of squats performed with a dumbbell or kettlebell."
+        },
+        {
+            "name": "Cable Squat",
+            "explanation": "Works the quads, glutes, and hamstrings by performing a squat holding the cable."
         }
     ],
     "Abs": [
@@ -291,6 +299,10 @@
         {
             "name": "Side Planks",
             "explanation": "A core exercise that targets the obliques and abs."
+        },
+        {
+            "name": "Cable Crunch",
+            "explanation": "Strengthens the abs by pulling the cable down while performing a crunch."
         }
     ]
 }

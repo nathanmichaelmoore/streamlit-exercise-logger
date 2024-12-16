@@ -1,1 +1,57 @@
-[{"name": "", "exercises": []}, {"name": "Rp Day 1", "exercises": [{"exercise": "Push-Ups", "set_type": "myo"}, {"exercise": "Lateral Raises", "set_type": "myo"}, {"exercise": "Dumbbell Curls", "set_type": "superset", "superset_exercise": "Crunches", "superset_muscle_group": "Abs"}, {"exercise": "Dumbbell Bench Press", "set_type": "superset", "superset_exercise": "Chest Dips"}]}]
+[
+    {
+        "name": "",
+        "exercises": []
+    },
+    {
+        "name": "Rp Day 1",
+        "exercises": [
+            {
+                "exercise": "Push-Ups",
+                "set_type": "myo"
+            },
+            {
+                "exercise": "Lateral Raises",
+                "set_type": "myo"
+            },
+            {
+                "exercise": "Dumbbell Curls",
+                "set_type": "superset",
+                "superset_exercise": "Crunches",
+                "superset_muscle_group": "Abs"
+            },
+            {
+                "exercise": "Dumbbell Bench Press",
+                "set_type": "superset",
+                "superset_exercise": "Chest Dips"
+            }
+        ]
+    },
+    {
+        "name": "The First Workout",
+        "exercises": [
+            {
+                "exercise": "Push-Ups",
+                "set_type": "myo"
+            },
+            {
+                "exercise": "Upright Rows",
+                "set_type": "myo"
+            },
+            {
+                "exercise": "Dumbbell Curls",
+                "set_type": "superset",
+                "superset_exercise": "Cable Squat"
+            },
+            {
+                "exercise": "Cable Tricep Pushdowns",
+                "set_type": "superset",
+                "superset_exercise": "Cable Rows"
+            },
+            {
+                "exercise": "Crunches",
+                "set_type": "myo"
+            }
+        ]
+    }
+]

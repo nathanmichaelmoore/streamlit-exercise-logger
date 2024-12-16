@@ -1,0 +1,15 @@
+DateTime,WorkoutNum,WorkoutName,ExerciseName,Weight,SetNum,Rep,SetType
+2024-12-15T21:33:42,1,The First Workout,Push-Ups,170,1,10,myo
+2024-12-15T21:34:26,1,The First Workout,Push-Ups,170,2,8,myo
+2024-12-15T21:35:04,1,The First Workout,Push-Ups,170,3,4,myo
+2024-12-15T21:35:49,1,The First Workout,Push-Ups,170,4,3,myo
+2024-12-15T21:38:59,1,The First Workout,Upright Rows,15,1,23,myo
+2024-12-15T21:40:22,1,The First Workout,Upright Rows,15,2,15,myo
+2024-12-15T21:41:37,1,The First Workout,Upright Rows,15,3,12,myo
+2024-12-15T21:42:41,1,The First Workout,Upright Rows,15,4,11,myo
+2024-12-15T21:52:49,1,The First Workout,Dumbbell Curls,20,1,10,superset
+2024-12-15T21:54:36,1,The First Workout,Cable Squat,80,1,10,superset
+2024-12-15T22:14:21,1,The First Workout,Dumbbell Curls,20,2,10,superset
+2024-12-15T22:15:21,1,The First Workout,Cable Squat,20,2,10,superset
+2024-12-15T22:16:25,1,The First Workout,Dumbbell Curls,20,3,7,superset
+2024-12-15T22:20:38,1,The First Workout,Cable Tricep Pushdowns,60,4,20,superset
