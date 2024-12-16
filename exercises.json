@@ -1,0 +1,296 @@
+{
+    "Chest": [
+        {
+            "name": "Dumbbell Bench Press",
+            "explanation": "A compound exercise targeting the chest, shoulders, and triceps."
+        },
+        {
+            "name": "Dumbbell Flyes",
+            "explanation": "An isolation exercise focusing on the chest muscles."
+        },
+        {
+            "name": "Push-Ups",
+            "explanation": "A bodyweight exercise that targets the chest, shoulders, and triceps."
+        },
+        {
+            "name": "Cable Crossovers",
+            "explanation": "An isolation exercise for the chest using a cable machine."
+        },
+        {
+            "name": "Incline Dumbbell Press",
+            "explanation": "Targets the upper chest, shoulders, and triceps."
+        },
+        {
+            "name": "Decline Dumbbell Press",
+            "explanation": "Focuses on the lower chest, shoulders, and triceps."
+        },
+        {
+            "name": "Chest Dips",
+            "explanation": "A bodyweight exercise that targets the lower chest and triceps."
+        },
+        {
+            "name": "Cable Chest Press",
+            "explanation": "A compound exercise using cables to target the chest."
+        },
+        {
+            "name": "Dumbbell Pullover",
+            "explanation": "Targets the chest and lats."
+        },
+        {
+            "name": "Incline Push-Ups",
+            "explanation": "A variation of push-ups that targets the upper chest."
+        }
+    ],
+    "Back": [
+        {
+            "name": "Dumbbell Rows",
+            "explanation": "A compound exercise targeting the back and biceps."
+        },
+        {
+            "name": "Pull-Ups",
+            "explanation": "A bodyweight exercise that targets the back and biceps."
+        },
+        {
+            "name": "Lat Pulldowns",
+            "explanation": "Targets the lats and upper back using a cable machine."
+        },
+        {
+            "name": "Cable Rows",
+            "explanation": "A compound exercise for the back using a cable machine."
+        },
+        {
+            "name": "Deadlifts",
+            "explanation": "A full-body compound exercise focusing on the back and legs."
+        },
+        {
+            "name": "Dumbbell Deadlifts",
+            "explanation": "A variation of deadlifts using dumbbells."
+        },
+        {
+            "name": "T-Bar Rows",
+            "explanation": "Targets the middle back and lats."
+        },
+        {
+            "name": "Single-Arm Dumbbell Rows",
+            "explanation": "An isolation exercise for the back and biceps."
+        },
+        {
+            "name": "Inverted Rows",
+            "explanation": "A bodyweight exercise targeting the back and biceps."
+        },
+        {
+            "name": "Face Pulls",
+            "explanation": "Targets the rear delts and upper back using a cable machine."
+        }
+    ],
+    "Shoulders": [
+        {
+            "name": "Dumbbell Shoulder Press",
+            "explanation": "A compound exercise targeting the shoulders and triceps."
+        },
+        {
+            "name": "Lateral Raises",
+            "explanation": "An isolation exercise for the side delts."
+        },
+        {
+            "name": "Front Raises",
+            "explanation": "Targets the front delts."
+        },
+        {
+            "name": "Rear Delt Flyes",
+            "explanation": "An isolation exercise for the rear delts."
+        },
+        {
+            "name": "Arnold Press",
+            "explanation": "A variation of the shoulder press that targets all three heads of the deltoid."
+        },
+        {
+            "name": "Cable Lateral Raises",
+            "explanation": "An isolation exercise for the side delts using a cable machine."
+        },
+        {
+            "name": "Dumbbell Shrugs",
+            "explanation": "Targets the traps."
+        },
+        {
+            "name": "Upright Rows",
+            "explanation": "A compound exercise targeting the shoulders and traps."
+        },
+        {
+            "name": "Handstand Push-Ups",
+            "explanation": "A bodyweight exercise targeting the shoulders and triceps."
+        },
+        {
+            "name": "Cable Face Pulls",
+            "explanation": "Targets the rear delts and upper back using a cable machine."
+        }
+    ],
+    "Biceps": [
+        {
+            "name": "Dumbbell Curls",
+            "explanation": "An isolation exercise for the biceps."
+        },
+        {
+            "name": "Hammer Curls",
+            "explanation": "Targets the biceps and brachialis."
+        },
+        {
+            "name": "Concentration Curls",
+            "explanation": "An isolation exercise for the biceps."
+        },
+        {
+            "name": "Cable Curls",
+            "explanation": "An isolation exercise for the biceps using a cable machine."
+        },
+        {
+            "name": "Preacher Curls",
+            "explanation": "Targets the biceps using a preacher bench."
+        },
+        {
+            "name": "Incline Dumbbell Curls",
+            "explanation": "An isolation exercise for the biceps performed on an incline bench."
+        },
+        {
+            "name": "Chin-Ups",
+            "explanation": "A bodyweight exercise targeting the biceps and back."
+        },
+        {
+            "name": "Zottman Curls",
+            "explanation": "Combines a regular curl and a reverse curl to target the biceps and forearms."
+        },
+        {
+            "name": "Reverse Curls",
+            "explanation": "Targets the biceps and forearms."
+        },
+        {
+            "name": "Cable Hammer Curls",
+            "explanation": "An isolation exercise for the biceps and brachialis using a cable machine."
+        }
+    ],
+    "Triceps": [
+        {
+            "name": "Dumbbell Tricep Extensions",
+            "explanation": "An isolation exercise for the triceps."
+        },
+        {
+            "name": "Tricep Dips",
+            "explanation": "A bodyweight exercise targeting the triceps and chest."
+        },
+        {
+            "name": "Close-Grip Push-Ups",
+            "explanation": "A variation of push-ups that targets the triceps."
+        },
+        {
+            "name": "Cable Tricep Pushdowns",
+            "explanation": "An isolation exercise for the triceps using a cable machine."
+        },
+        {
+            "name": "Overhead Cable Extensions",
+            "explanation": "Targets the triceps using a cable machine."
+        },
+        {
+            "name": "Skull Crushers",
+            "explanation": "An isolation exercise for the triceps performed with a barbell or dumbbells."
+        },
+        {
+            "name": "Kickbacks",
+            "explanation": "An isolation exercise for the triceps using dumbbells."
+        },
+        {
+            "name": "Bench Dips",
+            "explanation": "A bodyweight exercise targeting the triceps and chest."
+        },
+        {
+            "name": "Dumbbell Kickbacks",
+            "explanation": "An isolation exercise for the triceps using dumbbells."
+        },
+        {
+            "name": "Cable Overhead Tricep Extensions",
+            "explanation": "Targets the triceps using a cable machine."
+        }
+    ],
+    "Legs": [
+        {
+            "name": "Squats",
+            "explanation": "A compound exercise targeting the legs and glutes."
+        },
+        {
+            "name": "Lunges",
+            "explanation": "A compound exercise targeting the legs and glutes."
+        },
+        {
+            "name": "Deadlifts",
+            "explanation": "A full-body compound exercise focusing on the back and legs."
+        },
+        {
+            "name": "Leg Press",
+            "explanation": "Targets the legs using a leg press machine."
+        },
+        {
+            "name": "Leg Curls",
+            "explanation": "An isolation exercise for the hamstrings."
+        },
+        {
+            "name": "Leg Extensions",
+            "explanation": "An isolation exercise for the quadriceps."
+        },
+        {
+            "name": "Calf Raises",
+            "explanation": "Targets the calves."
+        },
+        {
+            "name": "Step-Ups",
+            "explanation": "A compound exercise targeting the legs and glutes."
+        },
+        {
+            "name": "Bulgarian Split Squats",
+            "explanation": "A compound exercise targeting the legs and glutes."
+        },
+        {
+            "name": "Goblet Squats",
+            "explanation": "A variation of squats performed with a dumbbell or kettlebell."
+        }
+    ],
+    "Abs": [
+        {
+            "name": "Crunches",
+            "explanation": "An isolation exercise for the abs."
+        },
+        {
+            "name": "Leg Raises",
+            "explanation": "Targets the lower abs."
+        },
+        {
+            "name": "Planks",
+            "explanation": "A core exercise that targets the abs and lower back."
+        },
+        {
+            "name": "Russian Twists",
+            "explanation": "Targets the obliques and abs."
+        },
+        {
+            "name": "Bicycle Crunches",
+            "explanation": "An isolation exercise for the abs and obliques."
+        },
+        {
+            "name": "Cable Crunches",
+            "explanation": "An isolation exercise for the abs using a cable machine."
+        },
+        {
+            "name": "Hanging Leg Raises",
+            "explanation": "Targets the lower abs."
+        },
+        {
+            "name": "Mountain Climbers",
+            "explanation": "A full-body exercise that targets the abs and legs."
+        },
+        {
+            "name": "V-Ups",
+            "explanation": "An isolation exercise for the abs."
+        },
+        {
+            "name": "Side Planks",
+            "explanation": "A core exercise that targets the obliques and abs."
+        }
+    ]
+}

@@ -10,96 +10,34 @@ import json
 # Constants
 CSV_FILE = 'workout_log.csv'
 WORKOUT_FILE = 'workouts.json'
+EXERCISE_FILE = 'exercises.json'
 col = 10
 row = 3
 
+# Function to load exercises from file
+def load_exercises():
+    if os.path.isfile(EXERCISE_FILE):
+        with open(EXERCISE_FILE, 'r') as f:
+            return json.load(f)
+    return {}
+
+# Function to save exercises to file
+def save_exercises(exercises):
+    with open(EXERCISE_FILE, 'w') as f:
+        json.dump(exercises, f, indent=4)
+
 # Load exercises
-exercises = {
-    "Chest": [
-        {"name": "Dumbbell Bench Press", "explanation": "A compound exercise targeting the chest, shoulders, and triceps."},
-        {"name": "Dumbbell Flyes", "explanation": "An isolation exercise focusing on the chest muscles."},
-        {"name": "Push-Ups", "explanation": "A bodyweight exercise that targets the chest, shoulders, and triceps."},
-        {"name": "Cable Crossovers", "explanation": "An isolation exercise for the chest using a cable machine."},
-        {"name": "Incline Dumbbell Press", "explanation": "Targets the upper chest, shoulders, and triceps."},
-        {"name": "Decline Dumbbell Press", "explanation": "Focuses on the lower chest, shoulders, and triceps."},
-        {"name": "Chest Dips", "explanation": "A bodyweight exercise that targets the lower chest and triceps."},
-        {"name": "Cable Chest Press", "explanation": "A compound exercise using cables to target the chest."},
-        {"name": "Dumbbell Pullover", "explanation": "Targets the chest and lats."},
-        {"name": "Incline Push-Ups", "explanation": "A variation of push-ups that targets the upper chest."}
-    ],
-    "Back": [
-        {"name": "Dumbbell Rows", "explanation": "A compound exercise targeting the back and biceps."},
-        {"name": "Pull-Ups", "explanation": "A bodyweight exercise that targets the back and biceps."},
-        {"name": "Lat Pulldowns", "explanation": "Targets the lats and upper back using a cable machine."},
-        {"name": "Cable Rows", "explanation": "A compound exercise for the back using a cable machine."},
-        {"name": "Deadlifts", "explanation": "A full-body compound exercise focusing on the back and legs."},
-        {"name": "Dumbbell Deadlifts", "explanation": "A variation of deadlifts using dumbbells."},
-        {"name": "T-Bar Rows", "explanation": "Targets the middle back and lats."},
-        {"name": "Single-Arm Dumbbell Rows", "explanation": "An isolation exercise for the back and biceps."},
-        {"name": "Inverted Rows", "explanation": "A bodyweight exercise targeting the back and biceps."},
-        {"name": "Face Pulls", "explanation": "Targets the rear delts and upper back using a cable machine."}
-    ],
-    "Shoulders": [
-        {"name": "Dumbbell Shoulder Press", "explanation": "A compound exercise targeting the shoulders and triceps."},
-        {"name": "Lateral Raises", "explanation": "An isolation exercise for the side delts."},
-        {"name": "Front Raises", "explanation": "Targets the front delts."},
-        {"name": "Rear Delt Flyes", "explanation": "An isolation exercise for the rear delts."},
-        {"name": "Arnold Press", "explanation": "A variation of the shoulder press that targets all three heads of the deltoid."},
-        {"name": "Cable Lateral Raises", "explanation": "An isolation exercise for the side delts using a cable machine."},
-        {"name": "Dumbbell Shrugs", "explanation": "Targets the traps."},
-        {"name": "Upright Rows", "explanation": "A compound exercise targeting the shoulders and traps."},
-        {"name": "Handstand Push-Ups", "explanation": "A bodyweight exercise targeting the shoulders and triceps."},
-        {"name": "Cable Face Pulls", "explanation": "Targets the rear delts and upper back using a cable machine."}
-    ],
-    "Biceps": [
-        {"name": "Dumbbell Curls", "explanation": "An isolation exercise for the biceps."},
-        {"name": "Hammer Curls", "explanation": "Targets the biceps and brachialis."},
-        {"name": "Concentration Curls", "explanation": "An isolation exercise for the biceps."},
-        {"name": "Cable Curls", "explanation": "An isolation exercise for the biceps using a cable machine."},
-        {"name": "Preacher Curls", "explanation": "Targets the biceps using a preacher bench."},
-        {"name": "Incline Dumbbell Curls", "explanation": "An isolation exercise for the biceps performed on an incline bench."},
-        {"name": "Chin-Ups", "explanation": "A bodyweight exercise targeting the biceps and back."},
-        {"name": "Zottman Curls", "explanation": "Combines a regular curl and a reverse curl to target the biceps and forearms."},
-        {"name": "Reverse Curls", "explanation": "Targets the biceps and forearms."},
-        {"name": "Cable Hammer Curls", "explanation": "An isolation exercise for the biceps and brachialis using a cable machine."}
-    ],
-    "Triceps": [
-        {"name": "Dumbbell Tricep Extensions", "explanation": "An isolation exercise for the triceps."},
-        {"name": "Tricep Dips", "explanation": "A bodyweight exercise targeting the triceps and chest."},
-        {"name": "Close-Grip Push-Ups", "explanation": "A variation of push-ups that targets the triceps."},
-        {"name": "Cable Tricep Pushdowns", "explanation": "An isolation exercise for the triceps using a cable machine."},
-        {"name": "Overhead Cable Extensions", "explanation": "Targets the triceps using a cable machine."},
-        {"name": "Skull Crushers", "explanation": "An isolation exercise for the triceps performed with a barbell or dumbbells."},
-        {"name": "Kickbacks", "explanation": "An isolation exercise for the triceps using dumbbells."},
-        {"name": "Bench Dips", "explanation": "A bodyweight exercise targeting the triceps and chest."},
-        {"name": "Dumbbell Kickbacks", "explanation": "An isolation exercise for the triceps using dumbbells."},
-        {"name": "Cable Overhead Tricep Extensions", "explanation": "Targets the triceps using a cable machine."}
-    ],
-    "Legs": [
-        {"name": "Squats", "explanation": "A compound exercise targeting the legs and glutes."},
-        {"name": "Lunges", "explanation": "A compound exercise targeting the legs and glutes."},
-        {"name": "Deadlifts", "explanation": "A full-body compound exercise focusing on the back and legs."},
-        {"name": "Leg Press", "explanation": "Targets the legs using a leg press machine."},
-        {"name": "Leg Curls", "explanation": "An isolation exercise for the hamstrings."},
-        {"name": "Leg Extensions", "explanation": "An isolation exercise for the quadriceps."},
-        {"name": "Calf Raises", "explanation": "Targets the calves."},
-        {"name": "Step-Ups", "explanation": "A compound exercise targeting the legs and glutes."},
-        {"name": "Bulgarian Split Squats", "explanation": "A compound exercise targeting the legs and glutes."},
-        {"name": "Goblet Squats", "explanation": "A variation of squats performed with a dumbbell or kettlebell."}
-    ],
-    "Abs": [
-        {"name": "Crunches", "explanation": "An isolation exercise for the abs."},
-        {"name": "Leg Raises", "explanation": "Targets the lower abs."},
-        {"name": "Planks", "explanation": "A core exercise that targets the abs and lower back."},
-        {"name": "Russian Twists", "explanation": "Targets the obliques and abs."},
-        {"name": "Bicycle Crunches", "explanation": "An isolation exercise for the abs and obliques."},
-        {"name": "Cable Crunches", "explanation": "An isolation exercise for the abs using a cable machine."},
-        {"name": "Hanging Leg Raises", "explanation": "Targets the lower abs."},
-        {"name": "Mountain Climbers", "explanation": "A full-body exercise that targets the abs and legs."},
-        {"name": "V-Ups", "explanation": "An isolation exercise for the abs."},
-        {"name": "Side Planks", "explanation": "A core exercise that targets the obliques and abs."}
-    ]
-}
+def initialize_exercises():
+    exercises = load_exercises()
+    if not exercises:
+        exercises = {
+            "Chest": [], "Back": [], "Shoulders": [], "Biceps": [], "Triceps": [], "Legs": [], "Abs": []
+        }
+        save_exercises(exercises)
+    return exercises
+
+exercises = initialize_exercises()
+
 
 # Function to save workouts to a file
 def save_workouts(workouts):
@@ -206,7 +144,43 @@ st_autorefresh(interval=60000, key="datarefresh")
 st.sidebar.title("Navigation")
 if 'page' not in st.session_state:
     st.session_state['page'] = "Workout"
-page = st.sidebar.radio("Go to", ["Create Workout", "Workout", "History"], index=["Create Workout", "Workout", "History"].index(st.session_state['page']))
+page = st.sidebar.radio("Go to", ["Add Exercise","Create Workout", "Workout", "History"], index=["Add Exercise","Create Workout", "Workout", "History"].index(st.session_state['page']))
+
+if page == "Add Exercise":
+    st.title("Add a New Exercise")
+
+    # Input for exercise details
+    muscle_group = st.selectbox("Select Muscle Group", list(exercises.keys()))
+    exercise_name = st.text_input("Exercise Name")
+    exercise_explanation = st.text_area("Exercise Explanation")
+
+    # Button to add the exercise
+    if st.button("Add Exercise"):
+        if exercise_name and exercise_explanation:
+            new_exercise = {
+                "name": exercise_name,
+                "explanation": exercise_explanation
+            }
+            exercises[muscle_group].append(new_exercise)
+            save_exercises(exercises)
+            st.success(f"Exercise '{exercise_name}' added to {muscle_group} successfully!")
+        else:
+            st.error("Please fill in all fields before adding the exercise.")
+
+    # Display existing exercises for the selected muscle group
+    st.subheader(f"Exercises in {muscle_group}")
+    if exercises[muscle_group]:
+        for i, exercise in enumerate(exercises[muscle_group]):
+            col1, col2 = st.columns([4, 1])
+            with col1:
+                st.write(f"- **{exercise['name']}**: {exercise['explanation']}")
+            with col2:
+                if st.button(f"Remove", key=f"remove_{muscle_group}_{i}"):
+                    exercises[muscle_group].pop(i)
+                    save_exercises(exercises)
+                    st.rerun()
+    else:
+        st.write("No exercises available for this muscle group.")
 
 if page == "Create Workout":
     st.session_state['page'] = "Create Workout"
