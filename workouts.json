@@ -53,5 +53,52 @@
                 "set_type": "myo"
             }
         ]
+    },
+    {
+        "name": "Good Good 1",
+        "exercises": [
+            {
+                "exercise": "Push-Ups",
+                "set_type": "myo"
+            },
+            {
+                "exercise": "Lateral Raises",
+                "set_type": "myo"
+            },
+            {
+                "exercise": "Cable Rows",
+                "set_type": "superset",
+                "superset_exercise": "Skull Crushers"
+            },
+            {
+                "exercise": "Dumbbell Curls",
+                "set_type": "superset",
+                "superset_exercise": "Crunches"
+            }
+        ]
+    },
+    {
+        "name": "Dat Good Good 2",
+        "exercises": [
+            {
+                "exercise": "Dumbbell Flyes",
+                "set_type": "superset",
+                "superset_exercise": "Cable Tricep Pushdowns"
+            },
+            {
+                "exercise": "Cable Rows",
+                "set_type": "superset",
+                "superset_exercise": "Lateral Raises"
+            },
+            {
+                "exercise": "Dumbbell Curls",
+                "set_type": "superset",
+                "superset_exercise": "Cable Squat"
+            },
+            {
+                "exercise": "Crunches",
+                "set_type": "straight"
+            }
+        ]
     }
 ]

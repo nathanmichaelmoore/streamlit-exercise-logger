@@ -13,3 +13,37 @@ DateTime,WorkoutNum,WorkoutName,ExerciseName,Weight,SetNum,Rep,SetType
 2024-12-15T22:15:21,1,The First Workout,Cable Squat,20,2,10,superset
 2024-12-15T22:16:25,1,The First Workout,Dumbbell Curls,20,3,7,superset
 2024-12-15T22:20:38,1,The First Workout,Cable Tricep Pushdowns,60,4,20,superset
+2024-12-21T14:29:25,2,Good Good 1,Push-Ups,20,1,10,myo
+2024-12-21T14:30:10,2,Good Good 1,Push-Ups,20,2,7,myo
+2024-12-21T14:30:43,2,Good Good 1,Push-Ups,20,3,3,myo
+2024-12-21T14:31:20,2,Good Good 1,Push-Ups,20,4,3,myo
+2024-12-21T14:34:09,2,Good Good 1,Lateral Raises,10,1,9,myo
+2024-12-21T14:35:03,2,Good Good 1,Lateral Raises,10,2,6,myo
+2024-12-21T14:35:44,2,Good Good 1,Lateral Raises,10,3,4,myo
+2024-12-21T14:36:44,2,Good Good 1,Lateral Raises,10,4,4,myo
+2024-12-21T14:42:31,2,Good Good 1,Cable Rows,70,1,16,superset
+2024-12-21T14:47:02,3,Good Good 1,Cable Rows,80,1,11,superset
+2024-12-21T14:48:24,3,Good Good 1,Skull Crushers,15,1,8,superset
+2024-12-21T14:50:21,3,Good Good 1,Cable Rows,80,2,8,superset
+2024-12-21T14:51:31,3,Good Good 1,Skull Crushers,15,2,6,superset
+2024-12-21T14:53:35,3,Good Good 1,Cable Rows,80,3,7,superset
+2024-12-21T14:54:34,3,Good Good 1,Skull Crushers,80,3,6,superset
+2024-12-21T14:56:55,3,Good Good 1,Dumbbell Curls,80,4,10,superset
+2024-12-21T14:58:44,3,Good Good 1,Crunches,10,4,15,superset
+2024-12-21T14:59:46,3,Good Good 1,Dumbbell Curls,10,5,9,superset
+2024-12-26T21:56:58,4,Dat Good Good 2,Dumbbell Flyes,15,1,11,superset
+2024-12-26T21:58:36,4,Dat Good Good 2,Cable Tricep Pushdowns,80,1,15,superset
+2024-12-26T22:00:07,4,Dat Good Good 2,Dumbbell Flyes,15,2,7,superset
+2024-12-26T22:01:09,4,Dat Good Good 2,Cable Tricep Pushdowns,80,2,9,superset
+2024-12-26T22:03:03,4,Dat Good Good 2,Dumbbell Flyes,15,3,8,superset
+2024-12-26T22:04:04,4,Dat Good Good 2,Cable Tricep Pushdowns,80,3,8,superset
+2024-12-26T22:06:52,4,Dat Good Good 2,Dumbbell Flyes,80,4,8,superset
+2024-12-26T22:07:37,4,Dat Good Good 2,Cable Tricep Pushdowns,80,4,8,superset
+2024-12-26T22:23:24,4,Dat Good Good 2,Cable Rows,80,5,17,superset
+2024-12-26T22:25:43,4,Dat Good Good 2,Lateral Raises,10,5,15,superset
+2024-12-26T22:27:49,4,Dat Good Good 2,Cable Rows,80,6,15,superset
+2024-12-26T22:31:06,4,Dat Good Good 2,Lateral Raises,10,6,1,superset
+2024-12-26T22:33:36,4,Dat Good Good 2,Lateral Raises,80,7,10,superset
+2024-12-26T22:36:06,4,Dat Good Good 2,Dumbbell Curls,20,7,10,superset
+2024-12-26T22:36:21,4,Dat Good Good 2,Cable Squat,20,8,1,superset
+2024-12-26T22:38:10,4,Dat Good Good 2,Dumbbell Curls,20,8,8,superset

@@ -344,11 +344,9 @@ if page == "Workout":
     st.markdown(table_html, unsafe_allow_html=True)
 
     # Add "Next Exercise" button and weight number input in the same row, centered vertically
-    col1, col2 = st.columns([1, 3])
+    col1, col2, col3= st.columns(3,vertical_alignment="bottom")
     with col1:
-        st.write(" ")  # Add an empty line for vertical centering
-        st.write(" ")  # Add an empty line for vertical centering
-        if st.button("Next Exercise"):
+        if st.button("Next Exercise",use_container_width=True):
             current_exercise = exercise_details[st.session_state['current_exercise_index']]
             if current_exercise['set_type'] == 'superset':
                 if st.session_state['superset_index'] == 0:
@@ -367,7 +365,7 @@ if page == "Workout":
                     st.write("All exercises completed!")
             st.session_state['set_num'] = [0, 0]  # Reset set numbers for superset exercises
             st.rerun()
-            
+
     with col2:
         if st.session_state['selected_workout']['name'] != "":
             current_exercise = exercise_details[st.session_state['current_exercise_index']]
@@ -380,6 +378,22 @@ if page == "Workout":
            
             initial_weight = get_last_logged_weight(current_exercise_name)
             st.number_input('Weight', value=initial_weight, step=5, key='weight_input', on_change=update_weight)
+        
+                    
+    with col3:
+        # Previous Exercise button
+        if st.button("Previous Exercise",use_container_width=True):
+            if st.session_state['current_exercise_index'] > 0 or st.session_state['superset_index'] > 0:
+                if st.session_state['superset_index'] == 1:
+                    st.session_state['superset_index'] = 0
+                else:
+                    st.session_state['current_exercise_index'] -= 1
+                    current_exercise = exercise_details[st.session_state['current_exercise_index']]
+                    if current_exercise['set_type'] == 'superset':
+                        st.session_state['superset_index'] = 1
+                st.session_state['set_num'] = [0, 0]  # Reset set numbers for superset exercises
+                st.rerun()
+        
 
     # Create 3 rows of 10 columns each for rep buttons
     st.write("Click the buttons to log your reps")
@@ -397,6 +411,7 @@ if page == "Workout":
                     st.session_state['set_num'][st.session_state['superset_index']] += 1  # Increment set number for the current superset exercise
                     set_num = st.session_state['set_num'][st.session_state['superset_index']]
                     st.session_state['superset_index'] = (st.session_state['superset_index'] + 1) % 2  # Switch to the next superset exercise
+
                 else:
                     exercise_name = current_exercise['exercise']
                     st.session_state['set_num'] = [st.session_state['set_num'][0] + 1, 0]  # Increment set number for non-superset exercise
@@ -405,6 +420,7 @@ if page == "Workout":
                 log_to_csv(current_time, st.session_state['workout_num'], workout_name, exercise_name, st.session_state['weight'], set_num, st.session_state['rep'], current_exercise['set_type'])
                 st.session_state['set_rep_list'].append({'Set': set_num, 'Rep': st.session_state['rep']})
                 st.session_state['log_entries'].append({'Exercise': exercise_name, 'Set': set_num, 'Rep': st.session_state['rep'], 'Weight':st.session_state['weight_input']})
+                initial_weight = get_last_logged_weight(current_exercise_name)
                 st.rerun()
 
     # Add an "Undo" button
